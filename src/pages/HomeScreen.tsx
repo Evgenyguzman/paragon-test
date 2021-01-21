@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { getDayInfo, Results } from "../utils/getDayInfo";
 import { getHoursMinutesStringFromSeconds } from "../utils/getHoursMinutesStringFromSeconds";
 import { getHoursMinutesStringFromTime } from "../utils/getHoursMinutesStringFromTime";
 import { getPercentsFromTime } from "../utils/getPercentsFromTime";
 import { getPosition } from "../utils/getPosition";
 
-import { Button } from "./Button";
-import { DateTitle } from "./DateTitle";
-import { GradientLine } from "./GradientLine";
-import { TextWithLabel } from "./TextWithLabel";
+import { Button } from "../components/Button";
+import { DateTitle } from "../components/DateTitle";
+import { GradientLine } from "../components/GradientLine";
+import { TextWithLabel } from "../components/TextWithLabel";
 
 const date = new Date();
 let currentPosition: GeolocationPosition;
@@ -95,11 +95,19 @@ export const HomeScreen = () => {
           </div>
           <GradientLine
             id="linGrad1"
-            from={getPercentsFromTime(
-              new Date(sunriseSunsetData.civil_twilight_begin)
+            from={useMemo(
+              () =>
+                getPercentsFromTime(
+                  new Date(sunriseSunsetData.civil_twilight_begin)
+                ),
+              [sunriseSunsetData]
             )}
-            to={getPercentsFromTime(
-              new Date(sunriseSunsetData.civil_twilight_end)
+            to={useMemo(
+              () =>
+                getPercentsFromTime(
+                  new Date(sunriseSunsetData.civil_twilight_end)
+                ),
+              [sunriseSunsetData]
             )}
           />
         </div>

@@ -6,6 +6,6 @@ interface DateTitleProps {
   year: number;
 }
 
-export const DateTitle = React.memo(({ month, day, year }: DateTitleProps) => {
+export const DateTitle = ({ month, day, year }: DateTitleProps) => {
   return <h2>{`${month}/${day}/${year}`}</h2>;
-});
+};

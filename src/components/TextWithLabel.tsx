@@ -5,13 +5,11 @@ interface TextWithLabelProps {
   text: string;
 }
 
-export const TextWithLabel = React.memo(
-  ({ label, text }: TextWithLabelProps) => {
-    return (
-      <p>
-        <strong>{`${label}: `}</strong>
-        {text}
-      </p>
-    );
-  }
-);
+export const TextWithLabel = ({ label, text }: TextWithLabelProps) => {
+  return (
+    <p>
+      <strong>{`${label}: `}</strong>
+      {text}
+    </p>
+  );
+};

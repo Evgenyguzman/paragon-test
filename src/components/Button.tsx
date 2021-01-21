@@ -6,12 +6,10 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export const Button = React.memo(
-  ({ value, children, onClick }: ButtonProps) => {
-    return (
-      <button type="button" value={value} onClick={onClick}>
-        {children}
-      </button>
-    );
-  }
-);
+export const Button = ({ value, children, onClick }: ButtonProps) => {
+  return (
+    <button type="button" value={value} onClick={onClick}>
+      {children}
+    </button>
+  );
+};
